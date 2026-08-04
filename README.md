@@ -2,15 +2,15 @@
 
 Statistics Greenland (Grønlands Statistik) PxWeb MCP.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 250+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1394+ live data sources.
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `subjects` | Navigate the subject tree. Nodes are type "l" (folder) or "t" (table). |
-| `table_meta` | Table definition (dimensions, valid values). Keep the .px/.PX suffix on the table id. |
-| `query_table` | Pull data from a table. body is a PxWeb query object. PxWeb enforces a per-query cell limit; narrow selections for large tables. |
+| `subjects` | Browse the Statistics Greenland (Grønlands Statistik) PxWeb subject tree under the /Greenland database. Empty path returns root folders (type 'l') and tables (type 't'); supply a sub-path like 'BE/BE01' to drill deeper. Table IDs carry a '.px' or '.PX' suffix — pass verbatim to table_meta or query_table. |
+| `table_meta` | Fetch dimension definitions and valid coded values for a Statistics Greenland PxWeb table. Path must be the full sub-path ending in '.px'/'.PX' (e.g. 'BE/BE01/BEXSAT1.PX'). Returns dimensions with codes and value lists — use these to build the selection body for query_table. |
+| `query_table` | POST a PxWeb query to a Statistics Greenland table and return observations as json-stat2. body must be {query:[{code, selection:{filter,values}}], response:{format:'json-stat2'}}. An empty query ({query:[]}) requests the full table but may be rejected for large tables — narrow selections using codes from table_meta. |
 
 ## Quick Start
 
@@ -26,7 +26,7 @@ Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
 }
 ```
 
-Or connect to the full Pipeworx gateway for access to all 250+ data sources:
+Or connect to the full Pipeworx gateway for access to all 1394+ data sources:
 
 ```json
 {
@@ -50,7 +50,7 @@ The gateway picks the right tool and fills the arguments automatically.
 
 ## More
 
-- [All tools and guides](https://github.com/pipeworx-io/examples)
+- [Docs and guides](https://pipeworx.io/docs)
 - [pipeworx.io](https://pipeworx.io)
 
 ## License
