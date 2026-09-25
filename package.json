@@ -1,20 +1,32 @@
 {
   "name": "@pipeworx/mcp-stat-gl",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Statistics Greenland (Grønlands Statistik) PxWeb MCP.",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "bin": {
+    "mcp-stat-gl": "bin/cli.js"
+  },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "stat-gl"],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pipeworx-io/mcp-stat-gl"
+    "url": "git+https://github.com/pipeworx-io/mcp-stat-gl.git"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "tsx": "^4.19.0"
+  },
   "devDependencies": {
-    "typescript": "^5.7.0"
+    "typescript": "^5.9.3",
+    "@cloudflare/workers-types": "^4.20260405.1"
+  },
+  "pipeworx": {
+    "sourceHash": "v1-1a9cc37872ba9b00c705b7ccaaecafe222c817d7934cbc3ca828b6526feecf51",
+    "sourceCommit": "00c836ddeaecbdd581dcfb0fb1842efea104006e"
   }
 }
